@@ -7,6 +7,7 @@ import {
 
 import Home from './Home.js'
 import Sobre from './Sobre'
+import Produtos from './Produtos'
 
 class App extends Component {
   render() {
@@ -22,14 +23,15 @@ class App extends Component {
               </div>
               <ul className='nav navbar-nav'>
                 <li><Link to='/'>Home</Link></li>
-                <li><a href='/'>Produtos</a></li>
-                <li><Link to='/Sobre'>Sobre</Link></li>
+                <li><Link to='/produtos'>Produtos</Link></li>
+                <li><Link to='/sobre'>Sobre</Link></li>
               </ul>
             </div>
           </nav>
           <div className='container'>
             <Route exact path='/' component={Home} />
-            <Route exact path='/Sobre' component={Sobre} />
+            <Route exact path='/sobre' component={Sobre} />
+            <Route path='/produtos' component={Produtos} />
           </div>
         </div>
       </Router>
