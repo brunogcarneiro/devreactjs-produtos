@@ -1,4 +1,5 @@
 import React from 'react'
+import Axios from 'axios'
 
 import {
     BrowserRouter as Router,
@@ -9,23 +10,43 @@ import {
 import ProdutosHome from './ProdutosHome'
 import Categorias from './Categorias'
 
-const Produtos = (props) => {
-    return (
-        <div className='container'>
-            <div className='col-md-2'>
-                <ul className='nav'>
-                    <li><Link to='/produtos/categorias/1'>Categoria 1</Link></li>
-                    <li><Link to='/produtos/categorias/2'>Categoria 2</Link></li>
-                </ul>
+class Produtos extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+          categorias: []
+        }
+    }
+    
+    componentDidMount(){
+        Axios
+            .get(`http://localhost:3001/categorias`)
+            .then((response) => this.setState({
+                categorias: response.data
+            }))
+    }
+
+    render(){
+        const url = this.props.match.url;
+        return (
+            <div className='container'>
+                <div className='col-md-2'>
+                    <ul className='nav'>
+                        {this.state.categorias.map(cat => {
+                            return (
+                                <li key={cat.id}><Link to={`/produtos/categorias/${cat.id}`}>{cat.descricao}</Link></li>
+                            )
+                        })}
+                    </ul>
+                </div>
+                <div className='col-md-10'>
+                    <h1>Produtos</h1>
+                    <Route exact path={url} component={ProdutosHome} />
+                    <Route path={url+'/categorias/:catId'} component={Categorias} />
+                </div>
             </div>
-            <div className='col-md-10'>
-                <h1>Produtos</h1>
-                {props.match.url+'/categorias/:catId'}
-                <Route exact path={props.match.url} component={ProdutosHome} />
-                <Route path={props.match.url+'/categorias/:catId'} component={Categorias} />
-            </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default Produtos;
