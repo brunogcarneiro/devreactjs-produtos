@@ -1,35 +1,42 @@
 {
-    "categorias": [
-        {
-            "id": 1,
-            "descricao": "Alimentação"
-        },
-        {
-            "id": 2,
-            "descricao": "Limpeza"
-        }
-    ],
-    "produtos": [
-        {
-            "id": 1,
-            "categoria": 1,
-            "descricao": "Bolo"
-        },
-        {
-            "id": 2,
-            "categoria": 1,
-            "descricao": "Feijão"
-        },
-        {
-            "id": 3,
-            "categoria": 2,
-            "descricao": "Sabão"
-        },
-        {
-            "id": 4,
-            "categoria": 2,
-            "descricao": "Detergente"
-        }
-    ]
-
+  "categorias": [
+    {
+      "id": 1,
+      "descricao": "Alimentação"
+    },
+    {
+      "id": 2,
+      "descricao": "Limpeza"
+    },
+    {
+      "descricao": "Utilidades",
+      "id": 3
+    },
+    {
+      "descricao": "Brinquedos",
+      "id": 4
+    }
+  ],
+  "produtos": [
+    {
+      "id": 1,
+      "categoria": 1,
+      "descricao": "Bolo"
+    },
+    {
+      "id": 2,
+      "categoria": 1,
+      "descricao": "Feijão"
+    },
+    {
+      "id": 3,
+      "categoria": 2,
+      "descricao": "Sabão"
+    },
+    {
+      "id": 4,
+      "categoria": 2,
+      "descricao": "Detergente"
+    }
+  ]
 }
