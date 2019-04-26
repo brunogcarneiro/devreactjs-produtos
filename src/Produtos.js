@@ -7,12 +7,19 @@ import {
 
 import ProdutosHome from './ProdutosHome'
 import Categorias from './Categorias'
+import DisplayCategoria from './DisplayCategoria';
+import EditCategoria from './EditCategoria'
 
 class Produtos extends React.Component{
     constructor(props){
         super(props)
 
+        this.state = {
+            editingCategory : ''
+        }
+
         this.keyUpHandler = this.keyUpHandler.bind(this)
+        this.setEditingCategory = this.setEditingCategory.bind(this)
     }
 
     keyUpHandler(event){
@@ -21,6 +28,12 @@ class Produtos extends React.Component{
             this.props.createCategorias(this.refs.categoria.value)
             this.refs.categoria.value = ''
         }
+    }
+
+    setEditingCategory(id){
+        this.setState({
+            editingCategory: id
+        })
     }
 
     componentDidMount(){
@@ -35,12 +48,14 @@ class Produtos extends React.Component{
                 <div className='col-md-2'>
                     <ul className='nav'>
                         {this.props.categorias.map(cat => {
+                            const isEditingCategory = cat.id === this.state.editingCategory;
                             return (
                                 <li key={cat.id}>
-                                    <button className='btn btn-sm' onClick={() => deleteCategorias(cat.id)}>
-                                        <span className='glyphicon glyphicon-remove'></span>
-                                    </button>
-                                    <Link to={`/produtos/categorias/${cat.id}`}>{cat.descricao}</Link>
+                                    {
+                                        (isEditingCategory)
+                                            ? <EditCategoria cat={cat} editCategoria={this.editCategoria} setEditingCategory={this.setEditingCategory}/>
+                                            : <DisplayCategoria cat={cat} deleteCategorias={this.deleteCategorias} setEditingCategory={this.setEditingCategory}/>
+                                    }
                                 </li>
                             )
                         })}
