@@ -53,8 +53,8 @@ class Produtos extends React.Component{
                                 <li key={cat.id}>
                                     {
                                         (isEditingCategory)
-                                            ? <EditCategoria cat={cat} editCategoria={this.editCategoria} setEditingCategory={this.setEditingCategory}/>
-                                            : <DisplayCategoria cat={cat} deleteCategorias={this.deleteCategorias} setEditingCategory={this.setEditingCategory}/>
+                                            ? <EditCategoria cat={cat} editCategoria={this.props.editCategoria} setEditingCategory={this.setEditingCategory}/>
+                                            : <DisplayCategoria cat={cat} deleteCategorias={this.props.deleteCategorias} setEditingCategory={this.setEditingCategory}/>
                                     }
                                 </li>
                             )

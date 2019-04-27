@@ -7,7 +7,8 @@ const api = Axios.create({
 const apis = {
     loadCategorias: () => api.get('categorias'),
     deleteCategorias: (id) => api.delete(`categorias/${id}`),
-    createCategorias: (desc) => api.post(`categorias`, {'descricao': desc})
+    createCategorias: (desc) => api.post(`categorias`, {'descricao': desc}),
+    editCategoria: (id, desc) => api.put(`categorias/${id}`, {'descricao': desc})
 }
 
 export default apis
