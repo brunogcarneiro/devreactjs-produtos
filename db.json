@@ -58,6 +58,26 @@
       "categoria": "4",
       "descricao": "cavalo",
       "id": 9
+    },
+    {
+      "categoria": "1",
+      "descricao": "aaa",
+      "id": 10
+    },
+    {
+      "categoria": "2",
+      "descricao": "limpeza aaa",
+      "id": 11
+    },
+    {
+      "categoria": "4",
+      "descricao": "brinq",
+      "id": 12
+    },
+    {
+      "categoria": "3",
+      "descricao": "nova utilidade",
+      "id": 13
     }
   ]
 }

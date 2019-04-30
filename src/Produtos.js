@@ -16,11 +16,13 @@ class Produtos extends React.Component{
         super(props)
 
         this.state = {
-            editingCategory : ''
+            editingCategory : '',
+            produtos: []
         }
 
         this.keyUpHandler = this.keyUpHandler.bind(this)
         this.setEditingCategory = this.setEditingCategory.bind(this)
+        this.loadProdutos = this.loadProdutos.bind(this)
     }
 
     keyUpHandler(event){
@@ -38,7 +40,17 @@ class Produtos extends React.Component{
     }
 
     componentDidMount(){
+        const url = this.props.match.url;
+
         this.props.loadCategorias()
+    }
+
+    loadProdutos(cat){
+        console.log(cat)
+        this.props.loadProdutos(cat)
+            .then((res) => {
+                this.setState({produtos: res.data})
+            })
     }
 
     render(){
@@ -81,7 +93,17 @@ class Produtos extends React.Component{
                             />
                           )}
                         } />
-                    <Route path={url+'/categorias/:catId'} component={Categorias} />
+                    <Route 
+                        path={url+'/categorias/:catId'} 
+                        render={ (props) => {
+                            return (
+                                <Categorias
+                                    {...props}
+                                    produtos={this.state.produtos}
+                                    loadProdutos={this.loadProdutos}
+                                />
+                            )
+                        }} />
                 </div>
             </div>
         )

@@ -6,7 +6,7 @@ const ProdutosNovo = (props) => {
 
     const salvarClickHandler = () => {
         props.createProdutos(getNewProduto())
-        clean()
+            .then(redirectoTo(refs.select.value))
     }
 
     const getNewProduto = () => {
@@ -16,9 +16,8 @@ const ProdutosNovo = (props) => {
         }
     }
 
-    const clean = () => {
-        refs.select.value = 1
-        refs.input.value = ''
+    const redirectoTo = (cat) => {
+        props.history.push(`/produtos/categorias/${cat}`)
     }
     
     return (
