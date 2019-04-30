@@ -7,8 +7,9 @@ import {
 
 import ProdutosHome from './ProdutosHome'
 import Categorias from './Categorias'
-import DisplayCategoria from './DisplayCategoria';
+import DisplayCategoria from './DisplayCategoria'
 import EditCategoria from './EditCategoria'
+import ProdutosNovo from './ProdutosNovo'
 
 class Produtos extends React.Component{
     constructor(props){
@@ -63,10 +64,23 @@ class Produtos extends React.Component{
                     <div className='well well-sm'>
                         <input className='form-control' type='text' placeholder='Nova Categoria' ref='categoria' onKeyUp={this.keyUpHandler}></input>
                     </div>
+                    <Link to={`/produtos/novo`}>Novo Produto</Link>
                 </div>
                 <div className='col-md-10'>
                     <h1>Produtos</h1>
                     <Route exact path={url} component={ProdutosHome} />
+                    <Route 
+                        exact 
+                        path={url+'/novo'} 
+                        render={(props) => 
+                          { return (
+                            <ProdutosNovo
+                                {...props}
+                                createProdutos={this.props.createProdutos}
+                                categorias={this.props.categorias}
+                            />
+                          )}
+                        } />
                     <Route path={url+'/categorias/:catId'} component={Categorias} />
                 </div>
             </div>

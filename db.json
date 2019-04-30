@@ -37,6 +37,27 @@
       "id": 4,
       "categoria": 2,
       "descricao": "Detergente"
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "categoria": "1",
+      "descricao": "nova alimentação",
+      "id": 7
+    },
+    {
+      "categoria": "2",
+      "descricao": "nova limpeza",
+      "id": 8
+    },
+    {
+      "categoria": "4",
+      "descricao": "cavalo",
+      "id": 9
     }
   ]
 }

@@ -8,7 +8,8 @@ const apis = {
     loadCategorias: () => api.get('categorias'),
     deleteCategorias: (id) => api.delete(`categorias/${id}`),
     createCategorias: (desc) => api.post(`categorias`, {'descricao': desc}),
-    editCategoria: (id, desc) => api.put(`categorias/${id}`, {'descricao': desc})
+    editCategoria: (id, desc) => api.put(`categorias/${id}`, {'descricao': desc}),
+    createProdutos: (prod) => api.post(`produtos`, prod)
 }
 
 export default apis
